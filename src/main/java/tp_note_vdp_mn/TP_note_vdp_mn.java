@@ -16,6 +16,7 @@ public class TP_note_vdp_mn {
         System.out.println("Hello World!");
         Scanner sc=new Scanner(System.in);
         int i=sc.nextInt();
+        i="test";
         System.out.println(i);
     }
 }
