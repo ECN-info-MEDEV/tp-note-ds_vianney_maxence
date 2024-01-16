@@ -8,19 +8,24 @@ package tp_note_vdp_mn;
  *
  * @author viann
  */
+import java.util.Scanner;
+
 public class BugExample {
 
     public static void main(String[] args) {
-        int numerator = 10;
-        int denominator = 0;
+        Scanner scanner = new Scanner(System.in);
 
-        int result = divideNumbers(numerator, denominator);
+        System.out.print("Entrez un nombre : ");
+        int number = scanner.nextInt();
 
-        System.out.println("Result: " + result);
+        System.out.println("Le double du nombre est : " + doubleNumber(number));
     }
 
-    private static int divideNumbers(int numerator, int denominator) {
-        return numerator / denominator; // Cette ligne provoquera une division par zéro
+    private static int doubleNumber(int num) {
+        Scanner anotherScanner = new Scanner(System.in); // Erreur : Ne pas fermer ce Scanner
+
+        return num * 2;
     }
 }
+
 
