@@ -4,13 +4,12 @@
 
 package tp_note_vdp_mn;
 
-import java.util.Scanner;
 
 /**
  *
  * @author viann
  */
-public class TP_note_vdp_mn {
+public class TP {
 
     public static void main(String[] args) {
         System.out.println("Hello World!");
