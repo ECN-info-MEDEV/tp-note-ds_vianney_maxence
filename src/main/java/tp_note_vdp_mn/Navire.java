@@ -68,6 +68,16 @@ public class Navire {
         this.nom = nom;
     }
 
+    
+    /**
+     * Setter de la taille du navire
+     * @param taille 
+     */
+    public void setTaille(int taille) {
+        this.taille = taille;
+    }   
+    
+
     /**
      *Setter de la composition du navire
      * @param composition Cases composant le navire

@@ -71,16 +71,6 @@ public class Point2D {
         this.x=x;
         this.y=y;
     }
-    /**Méthode de translation de Point2D
-     * 
-     * @param dx Déplacement horizontal/abscisses
-     * @param dy Déplacement vertical/ordonnées
-     */
-    public void translate(int dx, int dy){
-        this.x+=dx;
-        this.y+=dy;
-    }
-
     /**Méthode qui dit si deux Point2D sont égaux
      * @param p Point2D avec qui on compare
      * @return True s'ils sont égaux, False sinon
