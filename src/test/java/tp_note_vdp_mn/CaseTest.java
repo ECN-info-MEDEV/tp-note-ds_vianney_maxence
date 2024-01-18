@@ -4,6 +4,9 @@
  */
 package tp_note_vdp_mn;
 
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -70,7 +73,44 @@ public class CaseTest {
         assertEquals(expResult2, result2);
     }
     
+    /**
+     * Test of SetPosition method, of Classe Case
+     */
+    @Test
+    public void testSetPosition(){
+        System.out.println("setPosition");
+        Point2D posiTest = new Point2D(5,8);
+        Case case1 = new Case();
+        case1.setPosition(posiTest);
+        assertTrue(posiTest.equals(case1.getPosition()));        
+    }
     
+    /**
+     *  Test of SetNavire methode, of class Case
+     */
+    @Test
+    public void testSetNavire(){
+        System.out.println("setNavire");
+        Navire navire = new Navire ("naviretest",3,new ArrayList<>());
+        Case case1 = new Case();
+        case1.setNavire(navire);
+        assertEquals(navire, case1.getNavire());
+    }
+    
+    /**
+     *  Test of setEstTouche methof, of class Case
+     */
+    @Test
+    public void testSetEstTouche(){
+        System.out.println("setEstTouche");
+        boolean exp = true;
+        boolean expBis = false;
+        Case case1= new Case();
+        case1.setEstTouche(exp);
+        assertEquals(exp, case1.isEstTouche());
+        case1.setEstTouche(expBis);
+        assertEquals(expBis, case1.isEstTouche());
+    }
 
     
     
