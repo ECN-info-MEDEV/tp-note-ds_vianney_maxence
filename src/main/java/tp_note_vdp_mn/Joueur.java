@@ -123,16 +123,18 @@ public class Joueur {
     public void affiche(){
         System.out.println("\nTableau de bord de "+nom);
         //Conception de la bordure interligne
-        String bordure="-";
+        String numerotation = "    1   2   3   4   5";
+        String bordure="  -";
         System.out.println("\nMAP DE LA DEFENSE\n");
         System.out.println("N= "+jeu.SIZE);
         for (int k=0;k<jeu.SIZE;k++){
             bordure=bordure+"----";
         }
+        System.out.println(numerotation);
         System.out.println(bordure);
         for(int i=0;i<jeu.SIZE;i++){
             //Conception d'une ligne
-            String ligne="|";
+            String ligne=i+" |";
             for (int j=0;j<jeu.SIZE;j++){
                 String val="   ";
                 //Détermination de l'élément présent sur la case
@@ -156,10 +158,11 @@ public class Joueur {
         System.out.println("Légende : / = segment de bateau intact");
         System.out.println("          X = segment de bateau touché");
         System.out.println("\nMAP DE L'ATTAQUE\n");
+        System.out.println(numerotation);
         System.out.println(bordure);
         for(int i=0;i<jeu.SIZE;i++){
             //Conception d'une ligne
-            String ligne="|";
+            String ligne=i+" |";
             for (int j=0;j<jeu.SIZE;j++){
                 String val="   ";
                 //Détermination de l'élément présent sur la case
