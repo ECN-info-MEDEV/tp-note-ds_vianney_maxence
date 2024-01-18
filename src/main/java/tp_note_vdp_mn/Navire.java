@@ -84,7 +84,7 @@ public class Navire {
     public Navire(String nom, int taille, ArrayList<Case> composition) {
         this.nom = nom;
         this.taille = taille;
-        this.composition = new ArrayList<>();
+        this.composition = composition;
     }
 
     /**
