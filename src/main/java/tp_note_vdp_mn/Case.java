@@ -19,7 +19,7 @@ public class Case {
 
     /**
      * Getter de la position
-     * @return
+     * @return La position
      */
     public Point2D getPosition() {
         return position;
@@ -27,7 +27,7 @@ public class Case {
 
     /**
      * Getter du Navire
-     * @return
+     * @return Le navire
      */
     public Navire getNavire() {
         return navire;
@@ -35,7 +35,7 @@ public class Case {
 
     /**
      * Getter du statut touché ou non
-     * @return
+     * @return Si la case est touchée ou non
      */
     public boolean isEstTouche() {
         return estTouche;
@@ -43,7 +43,7 @@ public class Case {
 
     /**
      * Setter de la postion
-     * @param position
+     * @param position Nouvelle position
      */
     public void setPosition(Point2D position) {
         this.position = position;
@@ -51,7 +51,7 @@ public class Case {
 
     /**
      * Setter pour le navire
-     * @param navire
+     * @param navire Nouveau navire
      */
     public void setNavire(Navire navire) {
         this.navire = navire;
@@ -59,7 +59,7 @@ public class Case {
 
     /**
      * Setter du statut touché ou non
-     * @param estTouche
+     * @param estTouche Nouveau statut de la case
      */
     public void setEstTouche(boolean estTouche) {
         this.estTouche = estTouche;
@@ -67,9 +67,9 @@ public class Case {
 
     /**
      * Constructeur avec attributs de la classe
-     * @param position
-     * @param navire
-     * @param estTouche
+     * @param position Position de la case
+     * @param navire Navire présent dessus
+     * @param estTouche Si la case est touchée ou non
      */
     public Case(Point2D position, Navire navire, boolean estTouche) {
         this.position = new Point2D(position);
@@ -78,7 +78,7 @@ public class Case {
     }
 
     /**
-     * Constructeur sans attribut de la classe
+     * Constructeur par défaut de la classe
      */
     public Case() {
         this.position = new Point2D();
@@ -88,7 +88,7 @@ public class Case {
     
     /**
      * Constructeur de recopie de la classe
-     * @param c
+     * @param c Case à recopier
      */
     public Case(Case c) {
         this.position = new Point2D(c.getPosition());
