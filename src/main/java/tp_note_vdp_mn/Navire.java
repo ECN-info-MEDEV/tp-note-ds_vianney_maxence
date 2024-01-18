@@ -5,6 +5,8 @@
 package tp_note_vdp_mn;
 
 import java.util.ArrayList;
+import java.util.InputMismatchException;
+import java.util.Scanner;
 
 /**
  *
@@ -81,4 +83,11 @@ public class Navire {
     }
     
     
-}
+    
+    public Navire(String nm,int tll){
+        nom=nm;
+        taille=tll;
+        composition=new ArrayList<>();
+    }
+
+   }}
