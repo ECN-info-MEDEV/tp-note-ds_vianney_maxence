@@ -18,7 +18,7 @@ public class Joueur {
     private ArrayList<Navire> armada;
     private int[][] mapDef;
     private int[][] mapAtt;
-    
+
     public Joueur(){
         Scanner sc=new Scanner(System.in);
         System.out.println("Joueur 1 rentre ses choix :\nVotre nom ?");
