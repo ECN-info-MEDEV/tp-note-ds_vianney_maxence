@@ -110,6 +110,7 @@ public class Joueur {
         System.out.println("Tableau de bord de "+nom);
         //Conception de la bordure interligne
         String bordure="-";
+        String espace="                         ";
         System.out.println("\nMAP DE LA DEFENSE\n");
         System.out.println("N= "+jeu.SIZE);
         for (int k=0;k<jeu.SIZE;k++){
