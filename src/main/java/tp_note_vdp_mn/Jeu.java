@@ -21,4 +21,19 @@ public class Jeu {
         System.out.println("Changement Joueur : Création Joueur 2");
         joueur2 = new Joueur();
     }
+    
+    public void tourDeJeu(int tour){
+        System.out.println("\n#####################################################");
+        System.out.println("Tour de Jeu n°"+tour);
+        joueur1.attaque(joueur2);
+        System.out.println("------------------------------------");
+        joueur2.attaque(joueur1);
+    }
+    
+    public boolean fini(){
+        if (joueur1.aPerdu() || joueur2.aPerdu()){
+            return true;
+        }
+        return false;
+    }
 }

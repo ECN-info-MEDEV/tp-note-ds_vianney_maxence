@@ -17,6 +17,20 @@ public class Navire {
     private int taille;
     private ArrayList<Case> composition;
 
+    public boolean estCoule(){
+        int cpt=0;
+        for (Case c:composition){
+            if (c.isEstTouche()){
+                cpt+=1;
+            }
+        }if (cpt==taille){
+            return true;
+        }else{
+            return false;
+        }
+    }
+    
+    
     public String getNom() {
         return nom;
     }
@@ -90,4 +104,4 @@ public class Navire {
         composition=new ArrayList<>();
     }
 
-   }}
+}

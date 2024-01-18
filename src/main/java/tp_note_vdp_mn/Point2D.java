@@ -88,15 +88,6 @@ public class Point2D {
         System.out.println(liste);
     }
     
-    /**Méthode pour calculer la distance entre deux Point2D
-     * @param p Point par rapport auquel on calcule la distance
-     * @return  Valeur de la distance en unité de map
-     */
-    public float distance(Point2D p){
-        float a=(this.getX()-p.getX())*(this.getX()-p.getX());
-        float b=(this.getY()-p.getY())*(this.getY()-p.getY());
-        return (float) Math.sqrt(a+b);
-    }
     /**Méthode qui dit si deux Point2D sont égaux
      * @param p Point2D avec qui on compare
      * @return True s'ils sont égaux, False sinon

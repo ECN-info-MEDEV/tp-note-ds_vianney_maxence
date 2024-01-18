@@ -168,4 +168,99 @@ public class Joueur {
         //Affichage de la légende
         System.out.println("Légende : o = plouf    X = touché");
     }
+
+    public void attaque(Joueur j){
+        System.out.println(nom+", c'est votre tour !");
+        affiche();
+        System.out.println("Choisissez la case que vous voulez attaquer !\nnuméro de la ligne...");
+        Scanner sc=new Scanner (System.in);
+        int x=0;
+        while (x==0){
+            try{
+                x=sc.nextInt();
+                if (x<0 || x>jeu.SIZE){
+                    x=0;
+                    System.out.println("Erreur... réessayez");
+                }
+            }catch(InputMismatchException ex){
+                System.out.println("Erreur... réessayez");
+                sc.next();
+            }
+        }
+        System.out.println("numéro de la colonne...");
+        int y=0;
+        while (x==0){
+            try{
+                x=sc.nextInt();
+                if (x<0 || x>jeu.SIZE){
+                    x=0;
+                    System.out.println("Erreur... réessayez");
+                }
+            }catch(InputMismatchException ex){
+                System.out.println("Erreur... réessayez");
+                sc.next();
+            }
+        }
+        Point2D p=new Point2D(x-1,y-1);
+        if (j.touche(p)){
+            mapAtt[x-1][y-1]=2;
+        }else{
+            mapAtt[x-1][y-1]=1;
+        }
+        System.out.println("Fin de l'attaque "+nom);
+        affiche();
+    }
+    
+    
+    public boolean touche(Point2D p){
+        boolean flag=false;
+        Navire cible=null;
+        for(Navire nav:armada){
+            for(Case c:nav.getComposition()){
+                if (c.getPosition().equals(p)){
+                    flag = true;
+                    c.setEstTouche(true);
+                    mapDef[p.getX()][p.getY()]=2;
+                    cible=nav;
+                }
+            }
+        }
+        if (cible.estCoule()){
+            System.out.println("Touché coulé ! Vous avez coulé "+cible.getNom());
+        }else{
+            System.out.println("Touché");
+        }
+        return flag;
+    }
+            
+    public boolean aPerdu(){
+        for (Navire nav:armada){
+            if (nav.estCoule()==false){
+                return false;
+            }
+        }
+        return true;
+    }     
+            
+    public String getNom() {
+        return nom;
+    }
+
+    public Jeu getJeu() {
+        return jeu;
+    }
+
+    public ArrayList<Navire> getArmada() {
+        return armada;
+    }
+
+    public int[][] getMapDef() {
+        return mapDef;
+    }
+
+    public int[][] getMapAtt() {
+        return mapAtt;
+    }
+    
+    
 }

@@ -13,6 +13,11 @@ public class TP {
 
     public static void main(String[] args) {
         Jeu j=new Jeu();
-        j.joueur1.affiche();
+        int i=1;
+        while (j.fini()==false){
+            j.tourDeJeu(i);
+            i+=1;
+        }
+        System.out.println("\n\nFIN DU JEU ! BYYYYYE");
     }
 }
