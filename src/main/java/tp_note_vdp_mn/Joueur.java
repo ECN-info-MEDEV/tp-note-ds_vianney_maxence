@@ -20,15 +20,54 @@ public class Joueur {
     private int[][] mapAtt;
     
     public Joueur(){
+        armada=new ArrayList<>();
+        armada.add(new Navire("Porte-avions",5));
+        armada.add(new Navire("Cuirassé",4));
+        armada.add(new Navire("Destroyer",3));
         Scanner sc=new Scanner(System.in);
-        System.out.println("Joueur 1 rentre ses choix :\nVotre nom ?");
+        System.out.println("Création Joueur : rentrez vos choix :\nVotre nom ?");
         try {
             nom=sc.nextLine();
         }catch (InputMismatchException ex){
-            System.out.println("Mauvaise rentrée... Vous serez joueur 1");
+            System.out.println("Mauvaise rentrée...");
         }
-        System.out.println("Maintenant, nous allons placer vos bateaux !\nVous en possédez 3.");
-        System.out.println("Le premier est le porte-avions. Il a une longueur de 5.");
+        affiche();
+        System.out.println("Maintenant, nous allons placer vos bateaux !\nVous en possédez "+armada.size());
+        for (int i=0;i<armada.size();i++){
+            System.out.println("Bateau "+(i+1)+" : "+armada.get(i).getNom());
+            placerNavire(armada.get(i));
+            
+        }
+    }
+    
+    public void placerNavire(Navire nav){
+        System.out.println("Choisissez la première case ! \nnuméro de la ligne...");
+        Scanner sc=new Scanner(System.in);
+        int x=0;
+        while (x==0){
+            try{
+                x=sc.nextInt();
+                if (x<=0 && x>jeu.SIZE){
+                    x=0;
+                }
+            }catch (InputMismatchException ex){
+            } finally {
+                System.out.println("Erreur... réessayez");
+            }
+        }
+        System.out.println("numéro de la colonne...");
+        int y=0;
+        while (y==0){
+            try{
+                y=sc.nextInt();
+                if (y<=0 && y>jeu.SIZE){
+                    y=0;
+                }
+            }catch (InputMismatchException ex){
+            } finally {
+                System.out.println("Erreur... réessayez");
+            }
+        }
     }
     
     
@@ -41,33 +80,23 @@ public class Joueur {
             bordure=bordure+"----";
         }
         System.out.println(bordure);
-        for(int i=0;i<20;i++){
+        System.out.println("MAP DE LA DEFENSE");
+        for(int i=0;i<jeu.SIZE;i++){
             //Conception d'une ligne
             String ligne="|";
-            for (int j=0;j<20;j++){
+            for (int j=0;j<jeu.SIZE;j++){
                 String val="   ";
                 //Détermination de l'élément présent sur la case
                 switch(mapDef[i][j]){                 
-                    case (1):
-                        val=" P ";
+                    case 0:
+                        val=" ";
                         break;
-                    case (2):
-                        val="ps ";
+                    case 1:
+                        val="/";
                         break;
-                    case (3):
-                        val="ep ";
+                    case 2:
+                        val="X";
                         break;
-                    case (4):
-                        val=" M ";
-                        break;
-                    case (5):
-                        val="nou";
-                        break;
-                    case (6):
-                        val="nt ";
-                        break;
-                    case (100):
-                        val="MOI";
                 }
                 ligne=ligne+" "+val+" |";
             }
@@ -75,7 +104,32 @@ public class Joueur {
             System.out.println(bordure);
         }
         //Affichage de la légende
-        System.out.println("Légende : P = Personnage    M = Monstre             ps = Potion de Soin");
-        System.out.println("          ep = Epée         nt = Nuage Toxique      nou = Nourriture  ");
+        System.out.println("Légende : / = segment de bateau intact");
+        System.out.println("          X = segemnt de bateau touché");
+        System.out.println("MAP DE L'ATTAQUE");
+        for(int i=0;i<jeu.SIZE;i++){
+            //Conception d'une ligne
+            String ligne="|";
+            for (int j=0;j<jeu.SIZE;j++){
+                String val="   ";
+                //Détermination de l'élément présent sur la case
+                switch(mapAtt[i][j]){                 
+                    case 0:
+                        val=" ";
+                        break;
+                    case 1:
+                        val="o";
+                        break;
+                    case 2:
+                        val="X";
+                        break;
+                }
+                ligne=ligne+" "+val+" |";
+            }
+            System.out.println(ligne);
+            System.out.println(bordure);
+        }
+        //Affichage de la légende
+        System.out.println("Légende : o = plouf    X = touché");
     }
 }
