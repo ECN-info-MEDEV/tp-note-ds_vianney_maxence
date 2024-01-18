@@ -13,8 +13,8 @@ public class Point2D {
     
     /**Constructeur par défaut. */
     public Point2D(){
-        x=-10;
-        y=-10;
+        x=0;
+        y=0;
     }
     /**Constructeur à paramètres
      * 
@@ -80,14 +80,7 @@ public class Point2D {
         this.x+=dx;
         this.y+=dy;
     }
-    /**Méthode d'affichage du Point2D*/
-    public void affiche(){
-        ArrayList liste = new ArrayList();
-        liste.add(this.getX());
-        liste.add(this.getY());
-        System.out.println(liste);
-    }
-    
+
     /**Méthode pour calculer la distance entre deux Point2D
      * @param p Point par rapport auquel on calcule la distance
      * @return  Valeur de la distance en unité de map
