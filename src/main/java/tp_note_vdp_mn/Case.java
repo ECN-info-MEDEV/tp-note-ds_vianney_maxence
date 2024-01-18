@@ -10,13 +10,15 @@ package tp_note_vdp_mn;
  * @author User
  */
 public class Case {
-    
+    /** position de la case*/
     private Point2D position;
+    /** navire auquel appartient la case*/
     private Navire navire;
+    /** statut de la case (touché ou non)*/
     private boolean estTouche;
 
     /**
-     * 
+     * Getter de la position
      * @return
      */
     public Point2D getPosition() {
@@ -24,7 +26,7 @@ public class Case {
     }
 
     /**
-     *
+     * Getter du Navire
      * @return
      */
     public Navire getNavire() {
@@ -32,7 +34,7 @@ public class Case {
     }
 
     /**
-     *
+     * Getter du statut touché ou non
      * @return
      */
     public boolean isEstTouche() {
@@ -40,7 +42,7 @@ public class Case {
     }
 
     /**
-     *
+     * Setter de la postion
      * @param position
      */
     public void setPosition(Point2D position) {
@@ -48,7 +50,7 @@ public class Case {
     }
 
     /**
-     *
+     * Setter pour le navire
      * @param navire
      */
     public void setNavire(Navire navire) {
@@ -56,7 +58,7 @@ public class Case {
     }
 
     /**
-     *
+     * Setter du statut touché ou non
      * @param estTouche
      */
     public void setEstTouche(boolean estTouche) {
@@ -64,7 +66,7 @@ public class Case {
     }
 
     /**
-     *
+     * Constructeur avec attributs de la classe
      * @param position
      * @param navire
      * @param estTouche
@@ -76,7 +78,7 @@ public class Case {
     }
 
     /**
-     *
+     * Constructeur sans attribut de la classe
      */
     public Case() {
         this.position = new Point2D();
@@ -85,7 +87,7 @@ public class Case {
     }
     
     /**
-     *
+     * Constructeur de recopie de la classe
      * @param c
      */
     public Case(Case c) {
