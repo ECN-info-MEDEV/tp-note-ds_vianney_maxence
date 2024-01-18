@@ -41,15 +41,34 @@ public class Joueur {
     }
     
     public void placerNavire(Navire nav){
-        System.out.println("Choisissez la première case ! \nnuméro de la ligne...");
+        System.out.println("Bateau à l'horizontale ou à la verticale ? Horizontale=1, Verticale=0");
         Scanner sc=new Scanner(System.in);
+        int hv=100;
+        while (hv==100){
+            try{
+                hv=sc.nextInt();
+                if (hv!=1 && hv!=0){
+                    hv=100;
+                }
+            }catch(InputMismatchException ex){
+            } finally{
+                System.out.println("Erreur... réessayez");
+            }
+        }
+        System.out.println("Choisissez la première case à gauche en haut ! \nnuméro de la ligne...");
         int x=0;
         while (x==0){
             try{
                 x=sc.nextInt();
                 if (x<=0 && x>jeu.SIZE){
                     x=0;
+                }if (hv==0){
+                    if (((x+nav.getTaille()-1)>jeu.SIZE) || (x-nav.getTaille()+1)<1){
+                        x=0;
+                        System.out.println("Le bateau ne rentrera pas !");
+                    }
                 }
+                
             }catch (InputMismatchException ex){
             } finally {
                 System.out.println("Erreur... réessayez");
@@ -62,11 +81,21 @@ public class Joueur {
                 y=sc.nextInt();
                 if (y<=0 && y>jeu.SIZE){
                     y=0;
+                }if (hv==1 && (((y+nav.getTaille()-1)>jeu.SIZE) || (y-nav.getTaille()+1)<1)){
+                    y=0;
+                    System.out.println("Le bateau ne rentrera pas !");
                 }
             }catch (InputMismatchException ex){
             } finally {
                 System.out.println("Erreur... réessayez");
             }
+        }
+        for (int i=0;i<nav.getTaille();i++){
+            nav.getComposition().add(new Case(new Point2D(x,y),nav,false));
+            mapDef[x][y]=1;
+            y+=hv;
+            x+=-(hv-1);
+            
         }
     }
     
