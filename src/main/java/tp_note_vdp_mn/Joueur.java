@@ -189,11 +189,11 @@ public class Joueur {
         }
         System.out.println("numéro de la colonne...");
         int y=0;
-        while (x==0){
+        while (y==0){
             try{
-                x=sc.nextInt();
-                if (x<0 || x>jeu.SIZE){
-                    x=0;
+                y=sc.nextInt();
+                if (y<0 || y>jeu.SIZE){
+                    y=0;
                     System.out.println("Erreur... réessayez");
                 }
             }catch(InputMismatchException ex){
@@ -225,10 +225,12 @@ public class Joueur {
                 }
             }
         }
-        if (cible.estCoule()){
-            System.out.println("Touché coulé ! Vous avez coulé "+cible.getNom());
-        }else{
-            System.out.println("Touché");
+        if (cible!=null){
+            if (cible.estCoule()){
+                System.out.println("Touché coulé ! Vous avez coulé "+cible.getNom());
+            }else{
+                System.out.println("Touché");
+            }
         }
         return flag;
     }
