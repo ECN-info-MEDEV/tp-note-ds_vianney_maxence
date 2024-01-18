@@ -1,7 +1,7 @@
 package tp_note_vdp_mn;
 import java.util.*;
 /**
- *
+ *Classe Point2D qui gère les positions sur les grilles du jeu
  * @author viann
  */
 public class Point2D {

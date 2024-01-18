@@ -9,16 +9,24 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 /**
- *
+ *Classe Joueur qui gère la défense et l'attaque du joueur ainsi que la création de ses grilles
  * @author viann
  */
 public class Joueur {
+    /**Nom du joueur*/
     private String nom;
+    /**Jeu dans lequel le joueur évolue*/
     private Jeu jeu;
+    /**Liste des bateaux constituant la flotte du joueur*/
     private ArrayList<Navire> armada;
-    private int[][] mapDef;
-    private int[][] mapAtt;
+    /**Map de la défense du joueur*/
+    private int[][] mapDef;      //0=case vide, 1=bateau présent, 2= bateau touché
+    /**Map d'attaque du joueur*/
+    private int[][] mapAtt;     //0=case vide,  1=plouf, 2=touché
 
+    
+    /**Constructeur par défaut du joueur avec son placement de bateaux
+     */
     public Joueur(){
         mapDef=new int[jeu.SIZE][jeu.SIZE];
         mapAtt=new int[jeu.SIZE][jeu.SIZE];
@@ -43,6 +51,10 @@ public class Joueur {
         }
     }
     
+    /**Méthode pour placer un navire du Joueur
+     * 
+     * @param nav Navire à placer
+     */
     public void placerNavire(Navire nav){
         System.out.println("Bateau à l'horizontale ou à la verticale ? Horizontale=1, Verticale=0");
         Scanner sc=new Scanner(System.in);
@@ -105,12 +117,13 @@ public class Joueur {
         }
     }
     
-    
+    /**Méthode d'affichage du tableau de bord du joueur
+     * 
+     */
     public void affiche(){
-        System.out.println("Tableau de bord de "+nom);
+        System.out.println("\nTableau de bord de "+nom);
         //Conception de la bordure interligne
         String bordure="-";
-        String espace="                         ";
         System.out.println("\nMAP DE LA DEFENSE\n");
         System.out.println("N= "+jeu.SIZE);
         for (int k=0;k<jeu.SIZE;k++){
@@ -170,6 +183,10 @@ public class Joueur {
         System.out.println("Légende : o = plouf    X = touché");
     }
 
+    /**Méthode d'attaque du joueur avec le choix de la case à attaquer
+     * 
+     * @param j Nom du joueur à attaquer
+     */
     public void attaque(Joueur j){
         System.out.println(nom+", c'est votre tour !");
         affiche();
@@ -209,10 +226,13 @@ public class Joueur {
             mapAtt[x-1][y-1]=1;
         }
         System.out.println("Fin de l'attaque "+nom);
-        affiche();
     }
     
-    
+    /**Méthode pour savoir si le joueur est touché par l'attaque adverse
+     * 
+     * @param p Case attaquée par l'adversaire
+     * @return Booléen indiquant si le joueur est touché ou non
+     */
     public boolean touche(Point2D p){
         boolean flag=false;
         Navire cible=null;
@@ -235,7 +255,10 @@ public class Joueur {
         }
         return flag;
     }
-            
+    /**Méthode pour savoir si le joueur a perdu, càd si tous ses bateaux ont coulé.
+     * 
+     * @return Booléen indiquant si le joueur a perdu.
+     */    
     public boolean aPerdu(){
         for (Navire nav:armada){
             if (nav.estCoule()==false){
@@ -244,23 +267,40 @@ public class Joueur {
         }
         return true;
     }     
-            
+    /**Getter pour le nom
+     * 
+     * @return Nom du joueur
+     */   
     public String getNom() {
         return nom;
     }
-
+    
+    /**Getter pour le jeu
+     * 
+     * @return Jeu dont fait partie le joueur
+     */
     public Jeu getJeu() {
         return jeu;
     }
-
+    
+    /**Getter des bateaux de la flotte du joueur
+     * 
+     * @return La liste des bateaux
+     */
     public ArrayList<Navire> getArmada() {
         return armada;
     }
-
+    /**Getter de la map de défense du joueur
+     * 
+     * @return La map de défense
+     */
     public int[][] getMapDef() {
         return mapDef;
     }
-
+    /**Getter de la map d'attaque du joueur
+     * 
+     * @return La map d'attaque
+     */
     public int[][] getMapAtt() {
         return mapAtt;
     }

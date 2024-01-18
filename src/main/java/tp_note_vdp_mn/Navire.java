@@ -9,14 +9,21 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 /**
- *
+ *Classe Navire pour gérer les navires des joueurs lors du jeu
  * @author viann
  */
 public class Navire {
+    /**Nom du navire*/
     private String nom;
+    /**Taille du navire*/
     private int taille;
+    /**Liste des cases composant le navire*/
     private ArrayList<Case> composition;
-
+    
+    /**Méthode pour savoir si le navire est entièrement coulé ou non
+     * 
+     * @return Booléen indiquant si le navire est coulé
+     */
     public boolean estCoule(){
         int cpt=0;
         for (Case c:composition){
@@ -30,14 +37,16 @@ public class Navire {
         }
     }
     
-    
+    /**Getter du nom du navire
+     * 
+     * @return Le nom du navire
+     */
     public String getNom() {
         return nom;
     }
 
-    /**
-     * Getter pour la taille
-     * @return
+    /**Getter de la taille du navire
+     * @return La taille du navire
      */
     public int getTaille() {
         return taille;
@@ -45,41 +54,32 @@ public class Navire {
 
     /**
      * Getter pour la liste de position
-     * @return
+     * @return La liste des cases occupées par le navire
      */
     public ArrayList<Case> getComposition() {
         return composition;
     }
 
     /**
-     *
-     * @param nom
+     *Setter du nom du navire
+     * @param nom Nouveau nom
      */
     public void setNom(String nom) {
         this.nom = nom;
     }
 
     /**
-     *
-     * @param taille
-     */
-    public void setTaille(int taille) {
-        this.taille = taille;
-    }
-
-    /**
-     *
-     * @param composition
+     *Setter de la composition du navire
+     * @param composition Cases composant le navire
      */
     public void setComposition(ArrayList<Case> composition) {
         this.composition = composition;
     }
 
-    /**
-     *
-     * @param nom
-     * @param taille
-     * @param composition
+    /**Constructeur à paramètres du navire
+     * @param nom   Nom du navire
+     * @param taille Taille de navire
+     * @param composition Composition du navire
      */
     public Navire(String nom, int taille, ArrayList<Case> composition) {
         this.nom = nom;
@@ -88,7 +88,7 @@ public class Navire {
     }
 
     /**
-     *
+     *Constructeur par défaut du navire
      */
     public Navire() {
         this.nom = "nomVide";
@@ -97,11 +97,15 @@ public class Navire {
     }
     
     
-    
+    /**
+     * Constructeur à paramètres du navire
+     * @param nm Nom du navire
+     * @param tll Taille du navire
+     */
     public Navire(String nm,int tll){
         nom=nm;
         taille=tll;
         composition=new ArrayList<>();
     }
 
-   }
+}
