@@ -15,7 +15,10 @@ public class Jeu {
     public Joueur joueur2;
     
     public Jeu(){
+        System.out.println("Création Joueur 1");
         joueur1=new Joueur();
+        System.out.println("######################################################");
+        System.out.println("Changement Joueur : Création Joueur 2");
         joueur2 = new Joueur();
     }
 }

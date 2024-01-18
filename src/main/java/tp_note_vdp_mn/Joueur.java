@@ -18,8 +18,10 @@ public class Joueur {
     private ArrayList<Navire> armada;
     private int[][] mapDef;
     private int[][] mapAtt;
-    
+
     public Joueur(){
+        mapDef=new int[jeu.SIZE][jeu.SIZE];
+        mapAtt=new int[jeu.SIZE][jeu.SIZE];
         armada=new ArrayList<>();
         armada.add(new Navire("Porte-avions",5));
         armada.add(new Navire("Cuirassé",4));
@@ -34,8 +36,9 @@ public class Joueur {
         affiche();
         System.out.println("Maintenant, nous allons placer vos bateaux !\nVous en possédez "+armada.size());
         for (int i=0;i<armada.size();i++){
-            System.out.println("Bateau "+(i+1)+" : "+armada.get(i).getNom());
+            System.out.println("Bateau "+(i+1)+" : "+armada.get(i).getNom()+" de longueur "+armada.get(i).getTaille());
             placerNavire(armada.get(i));
+            affiche();
             
         }
     }
@@ -49,29 +52,31 @@ public class Joueur {
                 hv=sc.nextInt();
                 if (hv!=1 && hv!=0){
                     hv=100;
+                    System.out.println("Erreur... réessayez");
                 }
             }catch(InputMismatchException ex){
-            } finally{
                 System.out.println("Erreur... réessayez");
+                sc.next();
             }
         }
-        System.out.println("Choisissez la première case à gauche en haut ! \nnuméro de la ligne...");
+        System.out.println("Choisissez la première case du bateau la plus proche du coin supérieur gauche. \nnuméro de la ligne...");
         int x=0;
         while (x==0){
             try{
                 x=sc.nextInt();
-                if (x<=0 && x>jeu.SIZE){
+                if (x<=0 || x>jeu.SIZE){
                     x=0;
+                    System.out.println("Erreur... réessayez");
                 }if (hv==0){
-                    if (((x+nav.getTaille()-1)>jeu.SIZE) || (x-nav.getTaille()+1)<1){
+                    if ((x+nav.getTaille()-1)>jeu.SIZE){
                         x=0;
                         System.out.println("Le bateau ne rentrera pas !");
                     }
                 }
                 
             }catch (InputMismatchException ex){
-            } finally {
                 System.out.println("Erreur... réessayez");
+                sc.next();
             }
         }
         System.out.println("numéro de la colonne...");
@@ -79,20 +84,21 @@ public class Joueur {
         while (y==0){
             try{
                 y=sc.nextInt();
-                if (y<=0 && y>jeu.SIZE){
+                if (y<=0 || y>jeu.SIZE){
                     y=0;
-                }if (hv==1 && (((y+nav.getTaille()-1)>jeu.SIZE) || (y-nav.getTaille()+1)<1)){
+                    System.out.println("Erreur... réessayez");
+                }if (hv==1 && ((y+nav.getTaille()-1)>jeu.SIZE)){
                     y=0;
                     System.out.println("Le bateau ne rentrera pas !");
                 }
             }catch (InputMismatchException ex){
-            } finally {
                 System.out.println("Erreur... réessayez");
+                sc.next();
             }
         }
         for (int i=0;i<nav.getTaille();i++){
-            nav.getComposition().add(new Case(new Point2D(x,y),nav,false));
-            mapDef[x][y]=1;
+            nav.getComposition().add(new Case(new Point2D(x-1,y-1),nav,false));
+            mapDef[x-1][y-1]=1;
             y+=hv;
             x+=-(hv-1);
             
@@ -104,12 +110,12 @@ public class Joueur {
         System.out.println("Tableau de bord de "+nom);
         //Conception de la bordure interligne
         String bordure="-";
+        System.out.println("\nMAP DE LA DEFENSE\n");
         System.out.println("N= "+jeu.SIZE);
         for (int k=0;k<jeu.SIZE;k++){
             bordure=bordure+"----";
         }
         System.out.println(bordure);
-        System.out.println("MAP DE LA DEFENSE");
         for(int i=0;i<jeu.SIZE;i++){
             //Conception d'une ligne
             String ligne="|";
@@ -134,8 +140,9 @@ public class Joueur {
         }
         //Affichage de la légende
         System.out.println("Légende : / = segment de bateau intact");
-        System.out.println("          X = segemnt de bateau touché");
-        System.out.println("MAP DE L'ATTAQUE");
+        System.out.println("          X = segment de bateau touché");
+        System.out.println("\nMAP DE L'ATTAQUE\n");
+        System.out.println(bordure);
         for(int i=0;i<jeu.SIZE;i++){
             //Conception d'une ligne
             String ligne="|";

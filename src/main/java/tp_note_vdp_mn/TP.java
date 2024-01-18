@@ -12,6 +12,7 @@ package tp_note_vdp_mn;
 public class TP {
 
     public static void main(String[] args) {
-        System.out.println("Hello World!");
+        Jeu j=new Jeu();
+        j.joueur1.affiche();
     }
 }
